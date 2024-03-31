@@ -1,0 +1,53 @@
+#dataSources:
+#  ds0:
+#    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+#    driverClassName: com.mysql.jdbc.Driver
+#    jdbcUrl: jdbc:mysql://localhost:10000/leo_db?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+#    username: root
+#    password: admin
+#  ds1:
+#    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+#    driverClassName: com.mysql.jdbc.Driver
+#    jdbcUrl: jdbc:mysql://localhost:10001/leo_db?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+#    username: root
+#    password: admin
+#rules:
+#  - !SHARDING
+#    tables:
+#      order:
+#        actualDataNodes: ds${0..1}.order
+#    defaultDatabaseStrategy:
+#      standard:
+#        shardingColumn: order_id
+#        shardingAlgorithmName: database_inline
+#    defaultTableStrategy:
+#      none:
+#    shardingAlgorithms:
+#      database_inline:
+#        type: INLINE
+#        props:
+#          algorithm-expression: ds${order_id % 2}
+#props:
+#  sql-show: false
+
+dataSources:
+  ds0:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://localhost:10000/leo_db?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: root
+    password: admin
+  ds1:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://localhost:10001/leo_db?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: root
+    password: admin
+props:
+  sql-show: false
+
+
+
+
+
+

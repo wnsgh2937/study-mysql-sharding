@@ -1,0 +1,1 @@
+CREATE DATABASE leo_db default CHARACTER SET UTF8;
