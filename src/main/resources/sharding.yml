@@ -45,6 +45,7 @@ dataSources:
     password: admin
 props:
   sql-show: false
+  ddl-auto: false
 
 
 

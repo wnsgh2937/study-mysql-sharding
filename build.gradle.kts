@@ -32,6 +32,8 @@ dependencies {
     implementation("org.yaml:snakeyaml:1.33")
     implementation("org.glassfish.jaxb:jaxb-runtime:2.3.8")
     implementation("com.google.guava:guava:32.1.1-jre") // 몰라 필요해서 넣어줬음..;
+
+    testImplementation("io.kotest:kotest-runner-junit5")
 }
 
 tasks.withType<KotlinCompile> {
@@ -41,6 +43,6 @@ tasks.withType<KotlinCompile> {
     }
 }
 
-tasks.withType<Test> {
+tasks.withType<Test>().configureEach {
     useJUnitPlatform()
 }
