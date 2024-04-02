@@ -2,7 +2,6 @@ package org.example.studymysqlsharding.basic
 
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 
 @DataJpaTest
@@ -17,9 +16,9 @@ class BasicTest @Autowired constructor(
 
         orderRepository.save(order)
 
-        val foundedOrder = orderRepository.findById(order.orderId!!)
+        val foundedOrder = orderRepository.findById(order.orderDetailId!!)
 
-        require(order.orderId == foundedOrder.get().orderId)
+        require(order.orderDetailId == foundedOrder.get().orderDetailId)
     }
 
 }

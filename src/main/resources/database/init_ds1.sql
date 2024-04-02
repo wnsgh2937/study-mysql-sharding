@@ -1,6 +1,6 @@
-CREATE DATABASE leo_db default CHARACTER SET UTF8;
+CREATE DATABASE ds1 default CHARACTER SET UTF8;
 
-CREATE TABLE leo_db.`order` (
+CREATE TABLE ds1.`order` (
     order_id BIGINT PRIMARY KEY,
     customer_id BIGINT,
     total_price BIGINT,

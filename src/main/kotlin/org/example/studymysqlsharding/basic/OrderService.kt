@@ -1,13 +1,19 @@
 package org.example.studymysqlsharding.basic
 
+import org.springframework.stereotype.Controller
 import org.springframework.stereotype.Service
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
 
-@Service
+@Controller
+@RequestMapping("/api")
 class OrderService(
         private val orderRepository: OrderRepository
 ) {
 
+    @GetMapping("/test")
     fun fun0(){
-        orderRepository.save(Order.random())
+        val order = Order.random()
+        orderRepository.save(order)
     }
 }

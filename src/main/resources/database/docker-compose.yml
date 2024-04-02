@@ -1,6 +1,6 @@
 version: '3'
 services:
-  db0:
+  ds0:
     image: mysql:8.0
     container_name: mysql-0
     ports:
@@ -8,21 +8,21 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: admin
     command:
-      - --init-file=/data/application/init.sql
+      - --init-file=/data/application/init_ds0.sql
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - ./init.sql:/data/application/init.sql
-  db1:
-    image: mysql:8.0
-    container_name: mysql-1
-    ports:
-      - 10001:3306 # HOST:CONTAINER
-    environment:
-      MYSQL_ROOT_PASSWORD: admin
-    command:
-      - --init-file=/data/application/init.sql
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - ./init.sql:/data/application/init.sql
+      - ./init_ds0.sql:/data/application/init_ds0.sql
+#  ds1:
+#    image: mysql:8.0
+#    container_name: mysql-1
+#    ports:
+#      - 10001:3306 # HOST:CONTAINER
+#    environment:
+#      MYSQL_ROOT_PASSWORD: admin
+#    command:
+#      - --init-file=/data/application/init_ds1.sql
+#      - --character-set-server=utf8mb4
+#      - --collation-server=utf8mb4_unicode_ci
+#    volumes:
+#      - ./init_ds0.sql:/data/application/init_ds1.sql
