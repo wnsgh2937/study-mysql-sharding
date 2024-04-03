@@ -12,13 +12,13 @@ class BasicTest @Autowired constructor(
     @Test
     fun test0(){
 
-        val order = Order.random()
+        val orderDetail = OrderDetail.random()
 
-        orderRepository.save(order)
+        orderRepository.save(orderDetail)
 
-        val foundedOrder = orderRepository.findById(order.orderDetailId!!)
+        val foundedOrder = orderRepository.findById(orderDetail.orderDetailId!!)
 
-        require(order.orderDetailId == foundedOrder.get().orderDetailId)
+        require(orderDetail.orderDetailId == foundedOrder.get().orderDetailId)
     }
 
 }

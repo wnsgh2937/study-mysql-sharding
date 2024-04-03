@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 @Entity
 @Table(name = "order_detail")
-class Order(
+class OrderDetail(
 
 ) {
 
@@ -30,15 +30,15 @@ class Order(
     var deliveryAddress: String? = null // ... getter and setters
 
     companion object{
-        fun random() : Order{
-            val order = Order()
-            order.orderDetailId = (1L..1000000L).random()
-            order.customerId = (1L..1000000L).random()
-            order.totalPrice = (1L..1000000L).random()
-            order.orderStatus = "ORDERED"
-            order.orderDate = LocalDate.now()
-            order.deliveryAddress = "HERE"
-            return order
+        fun random() : OrderDetail{
+            val orderDetail = OrderDetail()
+            orderDetail.orderDetailId = (1L..1000000L).random()
+            orderDetail.customerId = (1L..1000000L).random()
+            orderDetail.totalPrice = (1L..1000000L).random()
+            orderDetail.orderStatus = "ORDERED"
+            orderDetail.orderDate = LocalDate.now()
+            orderDetail.deliveryAddress = "HERE"
+            return orderDetail
         }
     }
 }

@@ -1,7 +1,7 @@
 package org.example.studymysqlsharding.basic
 
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
-import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 
@@ -12,8 +12,9 @@ class OrderService(
 ) {
 
     @GetMapping("/test")
-    fun fun0(){
-        val order = Order.random()
-        orderRepository.save(order)
+    fun fun0() : ResponseEntity<String>{
+        val orderDetail = OrderDetail.random()
+        orderRepository.save(orderDetail)
+        return ResponseEntity.ok(orderDetail.orderDetailId.toString())
     }
 }

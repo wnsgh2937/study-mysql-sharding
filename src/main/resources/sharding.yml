@@ -34,18 +34,34 @@ dataSources:
   ds0:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.jdbc.Driver
-    jdbcUrl: jdbc:mysql://localhost:10000/ds0
+    jdbcUrl: jdbc:mysql://localhost:10000/db0
     username: root
     password: admin
   ds1:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.jdbc.Driver
-    jdbcUrl: jdbc:mysql://localhost:10000/ds1
+    jdbcUrl: jdbc:mysql://localhost:10001/db1
     username: root
     password: admin
 props:
-  sql-show: false
+  sql-show: true
   ddl-auto: false
+rules:
+  - !SHARDING
+    tables:
+      order_detail:
+        actualDataNodes: ds${0..1}.order_detail
+    defaultDatabaseStrategy:
+      standard:
+        shardingColumn: order_detail_id
+        shardingAlgorithmName: database_inline
+    defaultTableStrategy:
+      none:
+    shardingAlgorithms:
+      database_inline:
+        type: INLINE
+        props:
+          algorithm-expression: ds${order_detail_id % 2}
 
 
 
