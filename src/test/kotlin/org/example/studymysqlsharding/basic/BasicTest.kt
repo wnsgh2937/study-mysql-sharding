@@ -1,24 +1,27 @@
 package org.example.studymysqlsharding.basic
 
+import org.example.studymysqlsharding.keybase.hash.KeyHashEntity
+import org.example.studymysqlsharding.keybase.hash.KeyHashRepository
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.boot.test.context.SpringBootTest
 
-@DataJpaTest
+
+@SpringBootTest
 class BasicTest @Autowired constructor(
-        val orderRepository: OrderRepository
+        val keyHashRepository: KeyHashRepository
 ){
 
     @Test
     fun test0(){
 
-        val orderDetail = OrderDetail.random()
+        val keyHashEntity = KeyHashEntity.random()
 
-        orderRepository.save(orderDetail)
+        keyHashRepository.save(keyHashEntity)
+//
+        val foundedOrder = keyHashRepository.findById(keyHashEntity.orderDetailId!!)
 
-        val foundedOrder = orderRepository.findById(orderDetail.orderDetailId!!)
-
-        require(orderDetail.orderDetailId == foundedOrder.get().orderDetailId)
+        require(keyHashEntity.orderDetailId == foundedOrder.get().orderDetailId)
     }
 
 }

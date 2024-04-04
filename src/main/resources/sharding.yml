@@ -2,23 +2,26 @@
 #  ds0:
 #    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
 #    driverClassName: com.mysql.jdbc.Driver
-#    jdbcUrl: jdbc:mysql://localhost:10000/leo_db?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+#    jdbcUrl: jdbc:mysql://localhost:10000/seoul_db_0
 #    username: root
 #    password: admin
 #  ds1:
 #    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
 #    driverClassName: com.mysql.jdbc.Driver
-#    jdbcUrl: jdbc:mysql://localhost:10001/leo_db?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+#    jdbcUrl: jdbc:mysql://localhost:10001/tokyo_db_0
 #    username: root
 #    password: admin
+#props:
+#  sql-show: true
+#  ddl-auto: false
 #rules:
 #  - !SHARDING
 #    tables:
-#      order:
-#        actualDataNodes: ds${0..1}.order
+#      key_hash:
+#        actualDataNodes: ds${0..1}.order_detail
 #    defaultDatabaseStrategy:
 #      standard:
-#        shardingColumn: order_id
+#        shardingColumn: order_detail_id
 #        shardingAlgorithmName: database_inline
 #    defaultTableStrategy:
 #      none:
@@ -26,21 +29,19 @@
 #      database_inline:
 #        type: INLINE
 #        props:
-#          algorithm-expression: ds${order_id % 2}
-#props:
-#  sql-show: false
-
+#          algorithm-expression: ds${order_detail_id % 2}
+#
 dataSources:
   ds0:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.jdbc.Driver
-    jdbcUrl: jdbc:mysql://localhost:10000/db0
+    jdbcUrl: jdbc:mysql://localhost:10000/seoul_db_0
     username: root
     password: admin
   ds1:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.jdbc.Driver
-    jdbcUrl: jdbc:mysql://localhost:10001/db1
+    jdbcUrl: jdbc:mysql://localhost:10001/tokyo_db_0
     username: root
     password: admin
 props:
@@ -49,11 +50,11 @@ props:
 rules:
   - !SHARDING
     tables:
-      order_detail:
-        actualDataNodes: ds${0..1}.order_detail
+      key_hash:
+        actualDataNodes: {seoul_db_0.key_hash,tokyo_db_0.key_hash}
     defaultDatabaseStrategy:
       standard:
-        shardingColumn: order_detail_id
+        shardingColumn: user_id
         shardingAlgorithmName: database_inline
     defaultTableStrategy:
       none:

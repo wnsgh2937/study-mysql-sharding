@@ -33,7 +33,12 @@ dependencies {
     implementation("org.glassfish.jaxb:jaxb-runtime:2.3.8")
     implementation("com.google.guava:guava:32.1.1-jre") // 몰라 필요해서 넣어줬음..;
 
+    //https://kotest.io/docs/quickstart
     testImplementation("io.kotest:kotest-runner-junit5")
+//    testImplementation("io.kotest:kotest-assertions-core")
+//    testImplementation("io.kotest:kotest-property")
+
+//    testImplementation(kotlin("test"))
 }
 
 tasks.withType<KotlinCompile> {
@@ -46,3 +51,9 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
 }
+
+//noArg{
+//    annotation("jakarta.persistence.Entity")
+//    annotation("jakarta.persistence.MappedSuperclass")
+//    annotation("jakarta.persistence.Embeddable")
+//}

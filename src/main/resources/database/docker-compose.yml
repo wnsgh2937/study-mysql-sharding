@@ -2,27 +2,27 @@ version: '3'
 services:
   ds0:
     image: mysql:8.0
-    container_name: mysql-0
+    container_name: mysql-seoul
     ports:
       - 10000:3306 # HOST:CONTAINER
     environment:
       MYSQL_ROOT_PASSWORD: admin
     command:
-      - --init-file=/data/application/init_ds0.sql
+      - --init-file=/data/application/init_seoul.sql
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - ./init_ds0.sql:/data/application/init_ds0.sql
+      - ./init_seoul.sql:/data/application/init_seoul.sql
   ds1:
     image: mysql:8.0
-    container_name: mysql-1
+    container_name: mysql-tokyo
     ports:
       - 10001:3306 # HOST:CONTAINER
     environment:
       MYSQL_ROOT_PASSWORD: admin
     command:
-      - --init-file=/data/application/init_ds1.sql
+      - --init-file=/data/application/init_tokyo.sql
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - ./init_ds1.sql:/data/application/init_ds1.sql
+      - ./init_tokyo.sql:/data/application/init_tokyo.sql
